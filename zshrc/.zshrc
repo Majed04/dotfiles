@@ -17,6 +17,10 @@ export PATH=$ANDROID_HOME/tools:$PATH
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# Python
+export PATH="/path/to/python/bin:$PATH"
+
+
 # Pod Gem
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
