@@ -16,18 +16,11 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = vim.lsp.protocol.make_client_capabilities() 
 
-			vim.lsp.config("lua_ls", {
-				capabilities = capabilities,
-			})
-			vim.lsp.config("ts_ls", {
-				capabilities = capabilities,
-			})
-
-			vim.lsp.config("prismals", {
-				capabilities = capabilities,
-			})
+      vim.lsp.config('*', {
+        capabilities = capabilities
+      })
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
