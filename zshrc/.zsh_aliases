@@ -1,0 +1,10 @@
+my_local_ip() {
+  ifconfig | grep "inet " | grep -v 127.0.0.1 | awk "{print \$2}"
+}
+
+alias ip='my_local_ip'
+
+alias ll="ls -all"
+
+alias o="open ."
+
