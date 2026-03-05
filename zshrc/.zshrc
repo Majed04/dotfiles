@@ -22,8 +22,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(rbenv init - zsh)"
-
 # bun completions
 [ -s "/Users/majed/.bun/_bun" ] && source "/Users/majed/.bun/_bun"
 
@@ -33,3 +31,14 @@ eval "$(rbenv init - zsh)"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/nidlp-majed/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nidlp-majed/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/nidlp-majed/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nidlp-majed/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/nidlp-majed/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
