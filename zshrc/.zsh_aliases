@@ -37,3 +37,26 @@ alias g="git"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Show whether the project's DATABASE_URL points to local or production
+dbenv() {
+  local env_file="${1:-.env}"
+  if [ ! -f "$env_file" ]; then
+    echo "No $env_file found in $(pwd)"
+    return 1
+  fi
+
+  local url
+  url=$(grep -E '^[[:space:]]*DATABASE_URL[[:space:]]*=' "$env_file" | tail -n1 | sed -E 's/^[[:space:]]*DATABASE_URL[[:space:]]*=[[:space:]]*//; s/^"(.*)"$/\1/; s/^'\''(.*)'\''$/\1/')
+
+  if [ -z "$url" ]; then
+    echo "DATABASE_URL not set in $env_file"
+    return 1
+  fi
+
+  if echo "$url" | grep -qE 'localhost|127\.0\.0\.1|0\.0\.0\.0|::1'; then
+    printf '\033[32mLOCAL\033[0m       %s\n' "$url"
+  else
+    printf '\033[31mPRODUCTION\033[0m  %s\n' "$url"
+  fi
+}
