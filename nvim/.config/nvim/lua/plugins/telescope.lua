@@ -7,10 +7,10 @@ return {
       local builtin = require("telescope.builtin")
 
       local ff_opts = {
-        hidden = true, 
-        file_ignore_patterns = { 
-          "node_modules/.*" 
-        }
+        hidden = false,
+        file_ignore_patterns = {
+          "node_modules/.*",
+        },
       }
 
       vim.keymap.set("n", "<leader><leader>", function() 
