@@ -1,5 +1,10 @@
 font-family = "Hack Nerd Font Mono"
 font-size = 18
 
-window-height = 28
-window-width = 80
+window-width = 90
+window-height = 33
+
+window-position-x = 367
+window-position-y = 146
+
+window-save-state = never
