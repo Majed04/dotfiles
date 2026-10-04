@@ -42,3 +42,8 @@ fpath=(/Users/nidlp-majed/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# Android/RN builds: AGP 8.12 chokes on JDK 24+ (prefab stderr warning read as error).
+# Match CI (.github/workflows/build-deploy.yml uses Temurin 21).
+export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
+export PATH="$JAVA_HOME/bin:$PATH"

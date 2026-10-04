@@ -8,3 +8,6 @@ window-position-x = 367
 window-position-y = 146
 
 window-save-state = never
+
+background = fdf6e3 
+foreground = 657b83 
